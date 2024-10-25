@@ -36,8 +36,6 @@ git clone https://github.com/Ydtalel/store.git
 Перед установкой зависимостей убедитесь, что на компьютере установлен   
 Python 3.12 или новее и PostgreSQL.
 
-`pip install -r requirements.txt`
-
 ### 3. Запуск локально
 Для локального запуска создайте виртуальную среду и настройте базу данных.
 
@@ -81,6 +79,12 @@ DB_PORT=<your_db_port>
 Примените миграции в контейнере:
 
 `make migrate`
+
+Остановите и снова запустите контейнеры
+
+`make stop`
+
+`make run`
 
 API будет доступен по адресу http://localhost:8000/api/.
 
