@@ -23,6 +23,8 @@ class Price(models.Model):
     currency = models.CharField(max_length=3, choices=CURRENCY_CHOICES,
                                 default='USD')
     amount = models.DecimalField(max_digits=10, decimal_places=2)
+    product = models.OneToOneField('Product', on_delete=models.CASCADE,
+                                   related_name='price')
 
     def __str__(self):
         return f"{self.amount} {self.currency}"
@@ -32,7 +34,6 @@ class Product(models.Model):
     """Модель, представляющая товар с ценой, количеством и типом"""
 
     name = models.CharField(max_length=255)
-    price = models.ForeignKey(Price, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     barcode = models.CharField(max_length=50, unique=True)
     updated_at = models.DateTimeField(auto_now=True)
